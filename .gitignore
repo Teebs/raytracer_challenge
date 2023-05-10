@@ -1,0 +1,5 @@
+RayTracerChallenge/RayTracerLib/bin/*
+RayTracerChallenge/RayTracerLib/obj/*
+RayTracerChallenge/RayTracerTest/bin/*
+RayTracerChallenge/RayTracerTest/obj/*
+RayTracerChallenge/.vs/*
