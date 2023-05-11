@@ -1,6 +1,9 @@
-﻿namespace RayTracerLib
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Numerics;
+
+namespace RayTracerLib
 {
-    public struct Tuple 
+    public struct Tuple
     {
         public float X;
         public float Y;
@@ -12,8 +15,32 @@
             X = x;
             Y = y;
             Z = z;
-            W = w;     
+            W = w;
         }
+
+        public override bool Equals([NotNullWhen(true)] object? obj)
+        {
+            if (obj == null || obj.GetType() != typeof(Tuple))
+            {
+                return false;
+            }
+
+            Tuple tuple = (Tuple)obj;
+            return this == tuple;
+        }
+
+        public static bool operator ==(Tuple left, Tuple right)
+        {
+            return Math.Equals(left.X, right.X) &&
+                Math.Equals(left.Y, right.Y) &&
+                Math.Equals(left.Z, right.Z) &&
+                Math.Equals(left.W, right.W);
+        }
+        public static bool operator !=(Tuple left, Tuple right)
+        {
+            return !(left == right);
+        }
+
         public bool IsPoint()
         {
             return Math.Equals(W, 1.0f);

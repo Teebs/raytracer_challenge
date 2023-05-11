@@ -8,7 +8,7 @@ namespace RayTracerTest
     public class TupleTests
     {
         [TestMethod]
-        public void CreatePointTupleShouldInitializeWithCorrectValues()
+        public void CreateTupleAsPointShouldInitializeWithCorrectValues()
         {
             var tuple = new Tuple(4.3f, -4.2f, 3.1f, 1.0f);
             Assert.IsTrue(Math.Equals(tuple.X, 4.3f));
@@ -20,7 +20,7 @@ namespace RayTracerTest
         }
 
         [TestMethod]
-        public void CreateVectorTupleShouldInitializeWithCorrectValues()
+        public void CreateTupleAsVectorShouldInitializeWithCorrectValues()
         {
             var tuple = new Tuple(4.3f, -4.2f, 3.1f, 0.0f);
             Assert.IsTrue(Math.Equals(tuple.X, 4.3f));
@@ -32,17 +32,34 @@ namespace RayTracerTest
         }
 
         [TestMethod]
-        public void CreatePointTupleWithHelper()
+        public void CreatePointTupleShouldBePoint()
         {
             var tuple = Tuple.Point(4, -4, 3);
             Assert.IsTrue(tuple.IsPoint());
         }
 
         [TestMethod]
-        public void CreateVectorTupleWithHelper()
+        public void CreateVectorTupleShouldBeVector()
         {
             var tuple = Tuple.Vector(4, -4, 3);
             Assert.IsTrue(tuple.IsVector());
         }
+
+        [TestMethod]
+        public void CompareSimilarTuplesShouldBeEqual()
+        {
+            var tupleOne = Tuple.Vector(4, -4, 3);
+            var tupleTwo = Tuple.Vector(4, -4, 3);
+            Assert.IsTrue(tupleOne == tupleTwo);
+        }
+
+        [TestMethod]
+        public void CompareDifferentTuplesShouldNotBeEqual()
+        {
+            var tupleOne = Tuple.Vector(4, -4, 3);
+            var tupleTwo = Tuple.Point(4, -4, 3);
+            Assert.IsTrue(tupleOne != tupleTwo);
+        }
+
     }
 }
