@@ -109,5 +109,13 @@ namespace RayTracerTest
             Assert.AreEqual(result, vectorOne - vectorTwo);
         }
 
+        [TestMethod]
+        public void NegationVectorEqualsVector()
+        {
+            var vector = Tuple.Vector(1, 2, 3);
+            var result = Tuple.Vector(-1, -2, -3);
+            Assert.AreEqual(result, -vector);
+        }
+
     }
 }

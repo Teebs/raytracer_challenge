@@ -67,6 +67,19 @@ namespace RayTracerLib
             return diff;
         }
 
+        public static Tuple operator -(Tuple original)
+        {
+            Tuple negation = new Tuple()
+            {
+                X = -original.X,
+                Y = -original.Y,
+                Z = -original.Z,
+                W = original.W
+            };
+
+            return negation;
+        }
+
         public bool IsPoint()
         {
             return Math.Equals(W, 1.0f);
