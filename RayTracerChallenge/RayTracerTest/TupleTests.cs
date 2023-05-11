@@ -61,5 +61,53 @@ namespace RayTracerTest
             Assert.IsTrue(tupleOne != tupleTwo);
         }
 
+        [TestMethod]
+        public void AddVectorAndPointShouldEqualPoint()
+        {
+            var vector = Tuple.Vector(1, 2, 3);
+            var point = Tuple.Point(1, 1, 1);
+            var expectedResult = Tuple.Point(2, 3, 4);
+
+            Assert.AreEqual(expectedResult, point + vector);
+        }
+
+        [TestMethod]
+        public void AddVectorAndVectorShouldEqualVector()
+        {
+            var vectorOne = Tuple.Vector(1, 2, 3);
+            var vectorTwo = Tuple.Vector(1, 2, 3);
+            var expectedResult = Tuple.Vector(2, 4, 6);
+
+            Assert.AreEqual(expectedResult, vectorTwo + vectorOne);
+        }
+
+        [TestMethod]
+        public void SubtractTwoPointsShouldEqualVector()
+        {
+            var pointOne = Tuple.Point(2, -2, 2);
+            var pointTwo = Tuple.Point(-1, 1, -1);
+            var expectedResult = Tuple.Vector(3, -3, 3);
+
+            Assert.AreEqual(expectedResult, pointOne - pointTwo);
+        }
+
+        [TestMethod]
+        public void SubtractVectorFromPointEqualsPoint()
+        {
+            var point = Tuple.Point(2, 3, 4);
+            var vector = Tuple.Vector(1, 1, -1);
+            var result = Tuple.Point(1, 2, 5);
+            Assert.AreEqual(result, point - vector);
+        }
+
+        [TestMethod]
+        public void SubtractVectorFromVectorEqualsVector()
+        {
+            var vectorOne = Tuple.Vector(1, 2, 3);
+            var vectorTwo = Tuple.Vector(-1, 2, -3);
+            var result = Tuple.Vector(2, 0, 6);
+            Assert.AreEqual(result, vectorOne - vectorTwo);
+        }
+
     }
 }

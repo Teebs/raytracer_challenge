@@ -41,6 +41,32 @@ namespace RayTracerLib
             return !(left == right);
         }
 
+        public static Tuple operator +(Tuple left, Tuple right)
+        {
+            Tuple sum = new Tuple()
+            {
+                X = left.X + right.X,
+                Y = left.Y + right.Y,
+                Z = left.Z + right.Z,
+                W = left.W + right.W
+            };
+
+            return sum;
+        }
+
+        public static Tuple operator -(Tuple left, Tuple right)
+        {
+            Tuple diff = new Tuple()
+            {
+                X = left.X - right.X,
+                Y = left.Y - right.Y,
+                Z = left.Z - right.Z,
+                W = left.W - right.W
+            };
+
+            return diff;
+        }
+
         public bool IsPoint()
         {
             return Math.Equals(W, 1.0f);
