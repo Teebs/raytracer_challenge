@@ -117,5 +117,21 @@ namespace RayTracerTest
             Assert.AreEqual(result, -vector);
         }
 
+        [TestMethod]
+        public void MultiplyVectorScalesUp()
+        {
+            var vector = Tuple.Vector(1, 2, 3);
+            var result = Tuple.Vector(1.5f, 3, 4.5f);
+            Assert.AreEqual(result, vector * 1.5f);
+        }
+
+        [TestMethod]
+        public void MultiplyVectorScalesDown()
+        {
+            var vector = Tuple.Vector(2, 4, 6);
+            var result = Tuple.Vector(1, 2, 3);
+            Assert.AreEqual(result, vector * 0.5f);
+        }
+
     }
 }

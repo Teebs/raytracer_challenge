@@ -80,6 +80,18 @@ namespace RayTracerLib
             return negation;
         }
 
+        public static Tuple operator *(Tuple original, float multiplier)
+        {
+            Tuple multiplied = new Tuple()
+            {
+                X = original.X * multiplier,
+                Y = original.Y * multiplier,
+                Z = original.Z * multiplier,
+            };
+
+            return multiplied;
+        }
+
         public bool IsPoint()
         {
             return Math.Equals(W, 1.0f);
