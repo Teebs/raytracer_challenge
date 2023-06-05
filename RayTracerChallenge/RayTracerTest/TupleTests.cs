@@ -133,5 +133,65 @@ namespace RayTracerTest
             Assert.AreEqual(result, vector * 0.5f);
         }
 
+        [TestMethod]
+        public void DivideVectorScalesUp()
+        {
+            var vector = Tuple.Vector(1, 2, 3);
+            var result = Tuple.Vector(2f, 4, 6f);
+            Assert.AreEqual(result, vector / 0.5f);
+        }
+
+        [TestMethod]
+        public void DivideVectorScalesDown()
+        {
+            var vector = Tuple.Vector(2, 4, 6);
+            var result = Tuple.Vector(1, 2, 3);
+            Assert.AreEqual(result, vector / 2f);
+        }
+
+        [TestMethod]
+        public void SimpleVectorMagnitude()
+        {
+            var v1 = Tuple.Vector(0, 0, 1);
+            var result = 1.0f;
+            Assert.IsTrue(Math.Equals(v1.Magnitude(), result));
+        }
+
+        [TestMethod]
+        public void ComplexVector()
+        {
+            var v1 = Tuple.Vector(1, 2, 3);
+            var v1Mag = v1.Magnitude();
+            var result = (float)System.Math.Sqrt(14);
+            Assert.IsTrue(Math.Equals(v1Mag, result));
+        }
+
+        [TestMethod]
+        public void SimpleNormalizationTest()
+        {
+            var v1 = Tuple.Vector(4, 0, 0);
+            var normalized = v1.Normalize();
+            var result = Tuple.Vector(1, 0, 0);
+            Assert.AreEqual(normalized, result);
+        }
+
+        [TestMethod]
+        public void ComplexNormalizationTest()
+        {
+            var v1 = Tuple.Vector(1, 2, 3);
+            var normalized = v1.Normalize();
+            var result = Tuple.Vector(0.26726f, 0.53452f, 0.80178f);
+            Assert.AreEqual(normalized, result);
+
+        }
+
+        [TestMethod]
+        public void MagnitudeOfNormalizedVectorTest()
+        {
+            var v1 = Tuple.Vector(1, 2, 3);
+            var normalized = v1.Normalize();
+            Assert.IsTrue(Math.Equals(1, normalized.Magnitude()));
+        }
+
     }
 }

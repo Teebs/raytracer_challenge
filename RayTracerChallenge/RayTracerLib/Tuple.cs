@@ -92,6 +92,38 @@ namespace RayTracerLib
             return multiplied;
         }
 
+        public static Tuple operator /(Tuple original, float diviser)
+        {
+            Tuple result = new Tuple()
+            {
+                X = original.X / diviser,
+                Y = original.Y / diviser,
+                Z = original.Z / diviser,
+            };
+
+            return result;
+        }
+
+        public float Magnitude()
+        {
+            return Math.SquareRoot(X * X + Y * Y + Z * Z + W * W) ;
+        }
+
+        public Tuple Normalize()
+        {
+            var magnitude = Magnitude();
+
+            var normalizedVector = new Tuple()
+            {
+                X = X / magnitude,
+                Y = Y / magnitude,
+                Z = Z / magnitude,
+                W = W / magnitude
+            };
+
+            return normalizedVector;
+        }
+
         public bool IsPoint()
         {
             return Math.Equals(W, 1.0f);
