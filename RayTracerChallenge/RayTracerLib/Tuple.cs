@@ -134,6 +134,16 @@ namespace RayTracerLib
             return Math.Equals(W, 0.0f);
         }
 
+        public float DotProduct(Tuple v)
+        {
+            return this.X * v.X + this.Y * v.Y + this.Z * v.Z + this.W * v.W;
+        }
+
+        public Tuple CrossProduct(Tuple v)
+        {
+            return Tuple.Vector(Y * v.Z - Z * v.Y, Z*v.X - X*v.Z, X * v.Y - Y*v.X);
+        }
+
         public static Tuple Point(float x, float y, float z)
         {
             return new Tuple() { X = x, Y = y, Z = z, W = 1 };

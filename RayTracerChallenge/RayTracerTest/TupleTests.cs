@@ -193,5 +193,26 @@ namespace RayTracerTest
             Assert.IsTrue(Math.Equals(1, normalized.Magnitude()));
         }
 
+        [TestMethod]
+        public void DotProductTest()
+        {
+            var v1 = Tuple.Vector(1, 2, 3);
+            var v2 = Tuple.Vector(2, 4, 6);
+            var result = v1.DotProduct(v2);
+            Assert.IsTrue(Math.Equals(result, 28));
+        }
+
+        [TestMethod]
+        public void CrossProductTest()
+        {
+            var v1 = Tuple.Vector(1, 2, 3);
+            var v2 = Tuple.Vector(2, 3, 4);
+
+            var result1 = Tuple.Vector(-1, 2, -1);
+            var result2 = Tuple.Vector(1, -2, 1);
+
+            Assert.IsTrue(Math.Equals(result1, v1.CrossProduct(v2)));
+            Assert.IsTrue(Math.Equals(result2, v2.CrossProduct(v1)));
+        }
     }
 }
